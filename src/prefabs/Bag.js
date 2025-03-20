@@ -11,7 +11,7 @@ class Bagenemy extends Phaser.Physics.Arcade.Sprite {
 
 
         this.setCollideWorldBounds(true)
-        this.setScale(0.5)
+        //this.setScale()
 
         this.body.allowGravity = false
         this.speed = 30

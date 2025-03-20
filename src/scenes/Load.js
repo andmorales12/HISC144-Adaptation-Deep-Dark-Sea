@@ -26,7 +26,7 @@ class Load extends Phaser.Scene {
         
         // load tilemap
         this.load.image('tilesetImage', 'dsea.png')
-        this.load.tilemapTiledJSON('mapJSON', 'docean.json')
+        this.load.tilemapTiledJSON('mapJSON', 'dirtyocean.json')
         
         // sprites
         this.load.image('bag', 'images/bag.png')

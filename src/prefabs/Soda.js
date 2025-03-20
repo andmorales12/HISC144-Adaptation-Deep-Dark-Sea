@@ -10,6 +10,7 @@ class Sodaenemy extends Phaser.Physics.Arcade.Sprite {
         scene.physics.add.existing(this)
     
         this.setCollideWorldBounds(true)
+        this.setScale(0.5)
         this.body.allowGravity = false
         this.speed = 60;
     }
