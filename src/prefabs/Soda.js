@@ -1,18 +1,17 @@
-// enemy ship prefab
-class Sharkenemy extends Phaser.Physics.Arcade.Sprite {
+// enemy octopusprefab
+class Sodaenemy extends Phaser.Physics.Arcade.Sprite {
     constructor(scene, x, y) {
-        super(scene, x, y, 'shark');
+        super(scene, x, y, 'soda')
 
         // Store scene reference
         this.sceneRef = scene
 
         scene.add.existing(this)
         scene.physics.add.existing(this)
-        
+    
         this.setCollideWorldBounds(true)
-        this.setScale(0.8)
         this.body.allowGravity = false
-        this.speed = 100
+        this.speed = 60;
     }
 
     update(player) {
@@ -24,6 +23,7 @@ class Sharkenemy extends Phaser.Physics.Arcade.Sprite {
     destroyAndRespawn() {
         if (!this.scene) return;
 
+
         // Disable the enemy instead of destroying it
         this.setActive(false)
         this.setVisible(false)
@@ -31,7 +31,7 @@ class Sharkenemy extends Phaser.Physics.Arcade.Sprite {
 
         this.scene.time.delayedCall(3000, () => {
             if (!this.scene || !this.scene.map) return;
-            let spawn = this.scene.map.findObject('Spawns', obj => obj.name === 'sharkSpawn')
+            let spawn = this.scene.map.findObject('Spawns', obj => obj.name === 'sodaSpawn')
             if (spawn) {
                 this.setPosition(spawn.x, spawn.y)
                 this.setActive(true)

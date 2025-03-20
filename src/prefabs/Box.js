@@ -1,27 +1,24 @@
 // enemy ship prefab
-class Fishenemy extends Phaser.Physics.Arcade.Sprite {
+class Boxenemy extends Phaser.Physics.Arcade.Sprite {
     constructor(scene, x, y) {
-        super(scene, x, y, 'fish')
+        super(scene, x, y, 'box');
 
         // Store scene reference
         this.sceneRef = scene
-    
-        scene.add.existing(this)    // add to existing scene
+
+        scene.add.existing(this)
         scene.physics.add.existing(this)
-
-
+        
         this.setCollideWorldBounds(true)
-        this.setScale(0.5)
-
+        this.setScale(0.8)
         this.body.allowGravity = false
-        this.speed = 30
+        this.speed = 100
     }
 
     update(player) {
-        // fish movement to follow player
         if (player) {
             this.scene.physics.moveToObject(this, player, this.speed)
-        }   
+        }
     }
 
     destroyAndRespawn() {
@@ -34,16 +31,13 @@ class Fishenemy extends Phaser.Physics.Arcade.Sprite {
 
         this.scene.time.delayedCall(3000, () => {
             if (!this.scene || !this.scene.map) return;
-            let spawn = this.scene.map.findObject('Spawns', obj => obj.name === 'fishSpawn')
+            let spawn = this.scene.map.findObject('Spawns', obj => obj.name === 'boxSpawn')
             if (spawn) {
                 this.setPosition(spawn.x, spawn.y)
                 this.setActive(true)
                 this.setVisible(true)
                 this.body.enable = true // Ensure body is re-enabled when respawning
             }
-        });
-        
-    
-        
+        })
     }
 }

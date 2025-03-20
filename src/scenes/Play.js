@@ -5,7 +5,7 @@ class Play extends Phaser.Scene{
     create(){
         // tilemap
         const map = this.add.tilemap('mapJSON')
-        const tileset = map.addTilesetImage('seabgts', 'tilesetImage')
+        const tileset = map.addTilesetImage('dsea', 'tilesetImage')
         const layer1 = map.createLayer('Tile Layer 1', tileset)
 
         // adding collision in map
@@ -88,14 +88,16 @@ class Play extends Phaser.Scene{
         this.enemies = this.physics.add.group()
 
         // find enemy spawns
-        const sharkSpawn = map.findObject('Spawns', obj => obj.name === 'sharkSpawn')
-        const octoSpawn = map.findObject('Spawns', obj => obj.name === 'octoSpawn')
-        const fishSpawn = map.findObject('Spawns', obj => obj.name === 'fishSpawn')
+        const boxSpawn = map.findObject('Spawns', obj => obj.name === 'boxSpawn')
+        const sodaSpawn = map.findObject('Spawns', obj => obj.name === 'sodaSpawn')
+        const bluebagSpawn = map.findObject('Spawns', obj => obj.name === 'bluebagSpawn')
+        const bagSpawn = map.findObject('Spawns', obj => obj.name === 'bagSpawn')
         
         // spawn enemies
-        if (sharkSpawn) this.spawnEnemy('shark', sharkSpawn.x, sharkSpawn.y)
-        if (octoSpawn) this.spawnEnemy('octopus', octoSpawn.x, octoSpawn.y)
-        if (fishSpawn) this.spawnEnemy('fish', fishSpawn.x, fishSpawn.y)
+        if (boxSpawn) this.spawnEnemy('box', boxSpawn.x, boxSpawn.y)
+        if (sodaSpawn) this.spawnEnemy('soda', sodaSpawn.x, sodaSpawn.y)
+        if (bagSpawn) this.spawnEnemy('bag', bagSpawn.x, bagSpawn.y)
+        if (bluebagSpawn) this.spawnEnemy('bluebag', bluebagSpawn.x, bagSpawn.y)
         
         // adding collision detection between enemies & the map
         this.physics.add.collider(this.enemies, layer1)
@@ -176,9 +178,10 @@ class Play extends Phaser.Scene{
     // Spawn an enemy and add to the group
     spawnEnemy(type, x, y) {
         let enemy
-        if (type === 'shark') enemy = new Sharkenemy(this, x, y)
-        if (type === 'octopus') enemy = new Octopusenemy(this, x, y)
-        if (type === 'fish') enemy = new Fishenemy(this, x, y)
+        if (type === 'box') enemy = new Boxenemy(this, x, y)
+        if (type === 'soda') enemy = new Sodaenemy(this, x, y)
+        if (type === 'bluebag') enemy = new Bluebagenemy(this, x, y)
+        if (type === 'bag') enemy = new Bagenemy(this, x, y)
 
         if (enemy) this.enemies.add(enemy)
     }
