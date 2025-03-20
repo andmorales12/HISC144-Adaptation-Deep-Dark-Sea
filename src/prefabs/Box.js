@@ -10,9 +10,9 @@ class Boxenemy extends Phaser.Physics.Arcade.Sprite {
         scene.physics.add.existing(this)
         
         this.setCollideWorldBounds(true)
-        this.setScale(0.8)
+        this.setScale(1.25)
         this.body.allowGravity = false
-        this.speed = 60
+        this.speed = 40
     }
 
     update(player) {

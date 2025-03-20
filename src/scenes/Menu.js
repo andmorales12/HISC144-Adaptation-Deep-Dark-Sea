@@ -15,12 +15,14 @@ class Menu extends Phaser.Scene {
         // add title text
         //this.add.bitmapText()
         this.add.bitmapText(centerX, titleY, 'comixloud', 'DEEP DARK SEA', 64).setOrigin(0.5)
-        this.add.bitmapText(centerX, centerY + 150, 'comixloud', 'USE LEFT & RIGHT ARROWS TO MOVE, F KEY TO FIRE', 16).setOrigin(0.5)
-        this.add.bitmapText(centerX, centerY + 190, 'comixloud', 'TO SAVE PROGRESS IN GAME PRESS ENTER', 16).setOrigin(0.5)
-        this.add.bitmapText(centerX, centerY + 240, 'comixloud', 'PRESS ENTER TO BEGIN', 16).setOrigin(0.5)
+        this.add.bitmapText(centerX, centerY + 150, 'comixloud', 'USE ARROW KEYS TO MOVE', 16).setOrigin(0.5)
+        this.add.bitmapText(centerX, centerY + 190, 'comixloud', 'PRESS F TO FIRE', 16).setOrigin(0.5)
+        this.add.bitmapText(centerX, centerY + 235, 'comixloud', 'PRESS ENTER TO PLAY', 16).setOrigin(0.5)
+        this.add.bitmapText(centerX, centerY + 270, 'comixloud', '[SPACE] FOR GAME CREDITS', 16).setOrigin(0.5)
         
         //adds key
         keyEnter = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER)
+        keySPACE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE)
 
         // adding background music
         this.music = this.sound.add('underwater', {
@@ -38,6 +40,10 @@ class Menu extends Phaser.Scene {
         
         if(Phaser.Input.Keyboard.JustDown(keyEnter)){
             this.scene.start('playScene')
+        }
+
+        if(Phaser.Input.Keyboard.JustDown(keySPACE)){
+            this.scene.start('creditScene')
         }
 
     }
